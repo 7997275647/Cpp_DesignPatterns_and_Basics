@@ -4,9 +4,7 @@
 
 int main(){
     std::cout << "Hello World!" << std::endl;
-    Move moveCommand;
-    moveCommand.execute();
-    moveCommand.undo();
+    testCommandPattern();
     getchar();
     return 0;
 }
