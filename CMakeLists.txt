@@ -18,6 +18,7 @@ include_directories(${CMAKE_SOURCE_DIR}/Application/Inc)
 # Source files for Basics library
 set(BASICS_SOURCES
     Basics/Src/Pointers.cpp
+    Basics/Src/Vector.cpp
 )
 
 # Source files for DesignPatterns library
