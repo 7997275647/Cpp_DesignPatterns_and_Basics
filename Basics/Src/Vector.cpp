@@ -2,27 +2,37 @@
 #include <iostream>
 #include <vector>
 
+
+
 void vectorDataTypePractice(){
-    std:: vector <int> myVector;
-    if(myVector.empty()){
-        std::cout << "The vector is empty." << std::endl;
+    std:: vector<int> myVec;
+    myVec.push_back(10);
+    myVec.push_back(25);
+    myVec.push_back(35);
+    myVec.push_back(10);
+    myVec.push_back(25);
+    myVec.push_back(35);
+    myVec.push_back(10);
+    myVec.push_back(25);
+    myVec.push_back(35);
+    std:: cout << "Vector size: " << myVec.size() << std::endl;
+    std:: cout << "Vector capcity: " << myVec.capacity() << std::endl;
+    myVec.push_back(15);
+     std:: cout << "Vector size: " << myVec.size() << std::endl;
+    std:: cout << "Vector capcity: " << myVec.capacity() << std::endl;
+    if(myVec.empty()){
+        std:: cout<< "vector is empty" << std::endl;
     }
-    myVector.push_back(10);
-    myVector.push_back(20);
-    myVector.push_back(30);
-    myVector.push_back(40);
-    myVector.push_back(50);
-    myVector.push_back(60);
+    else{
+        std:: cout << "Vector first value is " << myVec.front() << std::endl;
+        std:: cout << "Vector lat value is " << myVec.back() << std::endl;
+        std:: cout << "Vector size: " << myVec.size() << std::endl;
+        myVec.pop_back();
+        std:: cout << "Vector first value is " << myVec.front() << std::endl;
+        std:: cout << "Vector lat value is " << myVec.back() << std::endl;
+        std:: cout << "Vector size: " << myVec.size() << std::endl;
+         std:: cout << "Vector capcity: " << myVec.capacity() << std::endl;
 
-    for(int x : myVector){
-        std::cout << x << std::endl;
-    }
-
-    myVector.pop_back();
-    myVector.erase(std::find(myVector.begin(), myVector.end(), 20));
-
-    for(int x : myVector){
-        std::cout << x << std::endl;
     }
 
 }
