@@ -14,7 +14,7 @@ void WeatherStation::notifyObserver()
     }
 }
 
-void WeatherStation::setWeather(std::string weathernews)
+void WeatherStation::setWeather(const std::string &weathernews)
 {
     this->weathernews = weathernews;
     notifyObserver();

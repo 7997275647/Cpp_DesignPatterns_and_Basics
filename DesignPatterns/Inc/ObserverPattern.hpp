@@ -29,7 +29,7 @@ private:
 public:
     void addObserver(Observer *observer) override;
     void notifyObserver() override;
-    void setWeather(std::string weathernews);
+    void setWeather(const std::string &weathernews);
 };
 
 class ObserverTV : public ::Observer
