@@ -9,21 +9,14 @@
 // The Move command simulates moving an object to a random position (x, y) and can undo the move by resetting the position to (0, 0).
 void Move::execute(){
     std:: cout<< "Executing Move Command" << std::endl;
-    data.x = rand() %10;
-    data.y = rand() %10;
-    std:: cout<< "Move Command executed with x: " << data.x << " and y: " << data.y << std::endl;
 }
 
 void Move::undo(){
     std:: cout<< "Undoing Move Command" << std::endl;
-    data.x = 0;
-    data.y = 0;
-    std:: cout<< "Move Command undone, x: " << data.x << " and y: " << data.y << std::endl;
 }
 
 void Move:: clear(){
-    data.x = 0;
-    data.y = 0;
+ 
 }
 
 
@@ -43,8 +36,6 @@ void Jump::clear(){
 
 // The testCommandPattern function demonstrates the usage of the Command pattern by creating multiple Move commands, executing them, and then undoing them.
 void testCommandPattern(){
-    std:: random_device rd;
-    int num = rd() %10;
     Move* moveCommand1 = new Move();
     Move* moveCommand2 = new Move();
     Move* moveCommand3 = new Move();

@@ -1,10 +1,6 @@
 #ifndef COMMANDPATTERN_HPP
 #define COMMANDPATTERN_HPP
 
-struct MoveData{
-    int x;
-    int y;
-};
 
 class Command{
     public:
@@ -15,7 +11,6 @@ class Command{
 };
 
 class Move : public Command{
-    MoveData data;
     public:
        void execute() override;
        void undo() override;
