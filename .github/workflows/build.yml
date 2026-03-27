@@ -2,9 +2,9 @@ name: Build and Test
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ '**' ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ '**' ]
 
 jobs:
   build:
@@ -96,12 +96,21 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential clang-format cppcheck
+        sudo apt-get install -y build-essential clang-format cppcheck clang
+    
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: 'cpp'
     
     - name: Run cppcheck
       run: |
-        cppcheck --enable=all --suppress=missingIncludeSystem \
+        cppcheck --enable=all \
+          --suppress=missingIncludeSystem \
+          --suppress=unusedFunction \
           --error-exitcode=1 \
+          --std=c++17 \
+          --inline-suppr \
           Application/ Basics/ DesignPatterns/
       continue-on-error: true
     
@@ -110,3 +119,15 @@ jobs:
         find Application Basics DesignPatterns -name "*.cpp" -o -name "*.hpp" | \
         xargs clang-format --dry-run --Werror
       continue-on-error: true
+    
+    - name: Build for CodeQL Analysis
+      run: |
+        mkdir -p build
+        cd build
+        cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 ..
+        cmake --build . --config Release
+    
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+      with:
+        category: "/language:cpp"
