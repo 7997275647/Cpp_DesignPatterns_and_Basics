@@ -22,7 +22,7 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Set up CMake
-      uses: lukka/get-cmake@v3
+      uses: lukka/get-cmake@v2
       with:
         cmakeVersion: 3.29.0
     
@@ -89,7 +89,7 @@ jobs:
       uses: actions/checkout@v4
     
     - name: Set up CMake
-      uses: lukka/get-cmake@v3
+      uses: lukka/get-cmake@v2
       with:
         cmakeVersion: 3.29.0
     
