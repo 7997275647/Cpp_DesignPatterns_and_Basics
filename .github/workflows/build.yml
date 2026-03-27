@@ -20,13 +20,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     
-    - name: Set up CMake
-      uses: lukka/get-cmake@v2
-    
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential ninja-build
+        sudo apt-get install -y build-essential ninja-build cmake
+        cmake --version
     
     - name: Create build directory
       run: mkdir -p build
@@ -65,13 +63,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     
-    - name: Set up CMake
-      uses: lukka/get-cmake@v2
-    
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential clang-format cppcheck clang
+        sudo apt-get install -y build-essential clang-format cppcheck clang cmake
+        cmake --version
     
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
