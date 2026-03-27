@@ -1,0 +1,112 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    name: Build ${{ matrix.os }} - ${{ matrix.config }}
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        config: [Release, Debug]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up CMake
+      uses: cmake-actions/cmake-action@v1.0
+      with:
+        cmake-version: '3.29.x'
+    
+    - name: Install dependencies (Ubuntu)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential ninja-build
+    
+    - name: Install dependencies (macOS)
+      if: runner.os == 'macOS'
+      run: |
+        brew install ninja
+    
+    - name: Create build directory
+      run: mkdir -p build
+    
+    - name: Configure project (Linux/macOS)
+      if: runner.os != 'Windows'
+      run: |
+        cd build
+        cmake -G "Unix Makefiles" \
+          -DCMAKE_BUILD_TYPE=${{ matrix.config }} \
+          -DCMAKE_CXX_STANDARD=17 \
+          ..
+    
+    - name: Configure project (Windows)
+      if: runner.os == 'Windows'
+      run: |
+        cd build
+        cmake -G "Visual Studio 17 2022" `
+          -DCMAKE_CXX_STANDARD=17 `
+          ..
+    
+    - name: Build project
+      run: |
+        cd build
+        cmake --build . --config ${{ matrix.config }}
+    
+    - name: Run application (Linux/macOS)
+      if: runner.os != 'Windows' && matrix.config == 'Release'
+      run: |
+        ./build/bin/Release/CppDesignPatterns
+    
+    - name: Run application (Windows)
+      if: runner.os == 'Windows' && matrix.config == 'Release'
+      run: |
+        .\build\bin\Release\CppDesignPatterns.exe
+    
+    - name: Upload build artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-${{ matrix.os }}-${{ matrix.config }}
+        path: build/bin/
+        retention-days: 7
+
+  code-quality:
+    name: Code Quality Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up CMake
+      uses: cmake-actions/cmake-action@v1.0
+      with:
+        cmake-version: '3.29.x'
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential clang-format cppcheck
+    
+    - name: Run cppcheck
+      run: |
+        cppcheck --enable=all --suppress=missingIncludeSystem \
+          --error-exitcode=1 \
+          Application/ Basics/ DesignPatterns/
+      continue-on-error: true
+    
+    - name: Check formatting
+      run: |
+        find Application Basics DesignPatterns -name "*.cpp" -o -name "*.hpp" | \
+        xargs clang-format --dry-run --Werror
+      continue-on-error: true
