@@ -5,7 +5,7 @@
 
 int main(){
     std::cout << "Hello World!" << std::endl;
-    //testCommandPattern();
+    testCommandPattern();
     vectorDataTypePractice();
     getchar();
     return 0;
