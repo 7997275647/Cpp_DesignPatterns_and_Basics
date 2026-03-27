@@ -4,6 +4,7 @@
 
 
 
+
 void vectorDataTypePractice(){
     std:: vector<int> myVec;
     myVec.push_back(10);
