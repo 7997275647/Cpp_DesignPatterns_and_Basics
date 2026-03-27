@@ -34,6 +34,7 @@ set(BASICS_SOURCES
 # Source files for DesignPatterns library
 set(DESIGNPATTERNS_SOURCES
     DesignPatterns/Src/CommandPattern.cpp
+    DesignPatterns/Src/ObserverPattern.cpp
 )
 
 # Source files for Application executable
