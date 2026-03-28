@@ -19,6 +19,7 @@ private:
     State *state;
 
 public:
+    Context(State *state) { state = state; }
     void setState(State *state);
     void request();
     ~Context() {}

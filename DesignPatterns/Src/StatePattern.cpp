@@ -22,9 +22,9 @@ void StateItemDispense::stateHandle()
 
 void testStatePattern()
 {
-    Context context;
-    context.setState(new StateItemSelected());
-    context.request();
-    context.setState(new StateItemDispense());
-    context.request();
+    Context context1(new StateItemSelected);
+    context1.setState(new StateItemSelected());
+    context1.request();
+    context1.setState(new StateItemDispense());
+    context1.request();
 }
