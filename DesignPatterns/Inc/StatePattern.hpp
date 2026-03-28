@@ -19,7 +19,7 @@ private:
     State *state;
 
 public:
-    Context(State *state) { state = state; }
+    Context(State *state) { this->state = state; }
     void setState(State *state);
     void request();
     ~Context() {}
