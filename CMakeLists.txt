@@ -29,12 +29,14 @@ include_directories(${CMAKE_SOURCE_DIR}/Application/Inc)
 set(BASICS_SOURCES
     Basics/Src/Pointers.cpp
     Basics/Src/Vector.cpp
+    Basics/Src/TwoPointers.cpp
 )
 
 # Source files for DesignPatterns library
 set(DESIGNPATTERNS_SOURCES
     DesignPatterns/Src/CommandPattern.cpp
     DesignPatterns/Src/ObserverPattern.cpp
+    DesignPatterns/Src/StatePattern.cpp
 )
 
 # Source files for Application executable
