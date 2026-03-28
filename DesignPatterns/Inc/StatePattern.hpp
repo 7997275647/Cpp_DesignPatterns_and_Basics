@@ -10,7 +10,7 @@ class State
 {
 public:
     virtual void stateHandle() = 0;
-    virtual ~State();
+    virtual ~State() {}
 };
 
 class Context
@@ -19,24 +19,23 @@ private:
     State *state;
 
 public:
-    Context();
     void setState(State *state);
     void request();
-    ~Context();
+    ~Context() {}
 };
 
 class StateItemSelected : public ::State
 {
 public:
     void stateHandle() override;
-    ~StateItemSelected();
+    ~StateItemSelected() {}
 };
 
 class StateItemDispense : public ::State
 {
 public:
     void stateHandle() override;
-    ~StateItemDispense();
+    ~StateItemDispense() {}
 };
 
 void testStatePattern();
