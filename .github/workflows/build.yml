@@ -82,7 +82,7 @@ jobs:
           --std=c++17 \
           --inline-suppr \
           Application/ Basics/ DesignPatterns/
-      continue-on-error: true
+      continue-on-error: false
     
     - name: Check formatting
       run: |
