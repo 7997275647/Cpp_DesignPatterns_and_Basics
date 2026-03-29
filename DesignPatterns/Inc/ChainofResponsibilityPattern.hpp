@@ -22,6 +22,7 @@ private:
     SupportHandle *nextHandler;
 
 public:
+    explicit BasicHandler(SupportHandle *nexthandler) : nextHandler(nexthandler) {}
     void HandleRequest(Request request) override;
     void AssignRequesttoNextHandler(SupportHandle *nexthandler) override;
 };
@@ -32,6 +33,7 @@ private:
     SupportHandle *nextHandler;
 
 public:
+    explicit MediumHandler(SupportHandle *nexthandler = nullptr) : nextHandler(nexthandler) {}
     void HandleRequest(Request request) override;
     void AssignRequesttoNextHandler(SupportHandle *nexthandler) override;
 };
@@ -42,6 +44,7 @@ private:
     SupportHandle *nextHandler;
 
 public:
+    explicit CriticalHandler(SupportHandle *nexthandler = nullptr) : nextHandler(nexthandler) {}
     void HandleRequest(Request request) override;
     void AssignRequesttoNextHandler(SupportHandle *nexthandler) override;
 };

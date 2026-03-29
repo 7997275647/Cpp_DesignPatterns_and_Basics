@@ -53,9 +53,9 @@ void CriticalHandler::AssignRequesttoNextHandler(SupportHandle *nexthandler)
 
 void testChainofResponsibilityPattern()
 {
-    BasicHandler *l1 = new BasicHandler;
-    MediumHandler *l2 = new MediumHandler;
-    CriticalHandler *l3 = new CriticalHandler;
+    BasicHandler *l1 = new BasicHandler(nullptr);
+    MediumHandler *l2 = new MediumHandler(nullptr);
+    CriticalHandler *l3 = new CriticalHandler(nullptr);
     l1->AssignRequesttoNextHandler(l2);
     l2->AssignRequesttoNextHandler(l3);
     l1->HandleRequest(MEDIUM);
