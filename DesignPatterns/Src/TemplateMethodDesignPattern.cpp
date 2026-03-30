@@ -45,4 +45,7 @@ void testTemplateMethodDesignPattern()
 
     t1->makeBeverage();
     c1->makeBeverage();
+
+    delete t1;
+    delete c1;
 }
