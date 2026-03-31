@@ -1,3 +1,7 @@
 # CMake build directories
 build/
 .vscode
+
+# Built documentation
+docs/_build/
+docs/doxygen/
