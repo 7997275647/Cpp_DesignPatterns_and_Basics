@@ -30,6 +30,7 @@ set(BASICS_SOURCES
     Basics/Src/Pointers.cpp
     Basics/Src/Vector.cpp
     Basics/Src/TwoPointers.cpp
+    Basics/Src/OperatorOverloading.cpp
 )
 
 # Source files for DesignPatterns library
