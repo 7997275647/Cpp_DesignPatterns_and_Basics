@@ -31,7 +31,7 @@ html: doxygen
 doxygen:
 	@echo "Running Doxygen..."
 	mkdir -p doxygen
-	doxygen ../Doxyfile
+	cd .. && doxygen Doxyfile && cd docs
 
 clean:
 	rm -rf $(BUILDDIR)/*
