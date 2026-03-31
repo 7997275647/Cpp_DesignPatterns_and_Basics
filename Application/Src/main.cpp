@@ -10,12 +10,13 @@
 int main()
 {
     std::cout << "Hello World!" << std::endl;
-    testTemplateMethodDesignPattern();
-    // testChainofResponsibilityPattern();
-    //  testStatePattern();
-    //   testObserverPattern();
-    //    testCommandPattern();
-    //    vectorDataTypePractice();
+    testOperatorOverloading();
+    // testTemplateMethodDesignPattern();
+    //  testChainofResponsibilityPattern();
+    //   testStatePattern();
+    //    testObserverPattern();
+    //     testCommandPattern();
+    //     vectorDataTypePractice();
     getchar();
     return 0;
 }
