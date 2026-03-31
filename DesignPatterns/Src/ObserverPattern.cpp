@@ -1,6 +1,5 @@
 #include "../Inc/ObserverPattern.hpp"
 
-// WeatherStation implementations
 void WeatherStation::addObserver(Observer *observer)
 {
     observers.push_back(observer);
@@ -20,7 +19,6 @@ void WeatherStation::setWeather(const std::string &weathernews)
     notifyObserver();
 }
 
-// ObserverTV implementations
 void ObserverTV::display()
 {
     std::cout << "weather is : " << weathernews << std::endl;
@@ -32,7 +30,6 @@ void ObserverTV::update(std::string &weathernews)
     display();
 }
 
-// ObserverMobile implementations
 void ObserverMobile::display()
 {
     std::cout << "weather is : " << weathernews << std::endl;

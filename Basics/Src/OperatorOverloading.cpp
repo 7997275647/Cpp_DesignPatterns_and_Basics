@@ -1,7 +1,6 @@
 #include "../Inc/OperatorOverloading.hpp"
 #include <iostream>
 
-// Overloading + operator
 Vector Vector::operator+(Vector obj)
 {
     Vector temp;

@@ -39,6 +39,27 @@
 /*erase() removes elements from the vector */
 /*swap() exchanges the contents of two vectors */
 
+/**
+ * @brief Demonstrates practical usage of std::vector data type.
+ *
+ * This function showcases various operations available with C++ std::vector including:
+ * - Push/pop operations for adding and removing elements
+ * - Size and capacity queries
+ * - Front and back element access
+ * - Empty state checks
+ *
+ * The function creates a vector, performs multiple push_back operations to demonstrate
+ * how vector size and capacity change dynamically, and then performs pop_back and
+ * access operations.
+ *
+ * @return void
+ *
+ * Output includes:
+ * - Initial vector size and capacity
+ * - Size and capacity after adding elements
+ * - First and last element values
+ * - Size and capacity after removing the last element
+ */
 void vectorDataTypePractice();
 
 #endif // VECTOR_HPP

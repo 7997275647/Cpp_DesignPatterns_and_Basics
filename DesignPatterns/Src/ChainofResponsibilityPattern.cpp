@@ -17,6 +17,7 @@ void BasicHandler::HandleRequest(Request request)
         nextHandler->HandleRequest(request);
     }
 }
+
 void MediumHandler::AssignRequesttoNextHandler(SupportHandle *nexthandler)
 {
     this->nextHandler = nexthandler;

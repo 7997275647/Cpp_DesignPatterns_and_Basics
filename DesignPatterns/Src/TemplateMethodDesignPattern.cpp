@@ -23,6 +23,7 @@ void TeaMaker::brew()
 {
     std::cout << "Tea Brewed Successfully!" << std::endl;
 }
+
 void CoffeeMaker::brew()
 {
     std::cout << "Coffee Brewed Successfully!" << std::endl;

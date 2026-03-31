@@ -2,11 +2,6 @@
 #include <iostream>
 #include <random>
 
-// Command Pattern Implementation
-// Move Command and Jump Command are concrete implementations of the Command interface.
-// The Command interface defines the execute, undo, and clear methods that all concrete commands must implement.
-
-// The Move command simulates moving an object to a random position (x, y) and can undo the move by resetting the position to (0, 0).
 void Move::execute()
 {
     std::cout << "Executing Move Command" << std::endl;
@@ -21,7 +16,6 @@ void Move::clear()
 {
 }
 
-// The Jump command simulates a jump action and can undo the jump by printing a message.
 void Jump::execute()
 {
     std::cout << "Executing Jump Command" << std::endl;
@@ -37,7 +31,6 @@ void Jump::clear()
     std::cout << "Clearing Jump Command" << std::endl;
 }
 
-// The testCommandPattern function demonstrates the usage of the Command pattern by creating multiple Move commands, executing them, and then undoing them.
 void testCommandPattern()
 {
     Move *moveCommand1 = new Move();
