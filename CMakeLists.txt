@@ -39,6 +39,7 @@ set(DESIGNPATTERNS_SOURCES
     DesignPatterns/Src/ObserverPattern.cpp
     DesignPatterns/Src/StatePattern.cpp
     DesignPatterns/Src/ChainofResponsibilityPattern.cpp
+    DesignPatterns/Src/TemplateMethodDesignPattern.cpp
 )
 
 # Source files for Application executable
