@@ -115,9 +115,12 @@ After building, run the executable:
 
 ```bash
 # Windows
-.\build\bin\Release\CppDesignPatterns.exe
+.\build\bin\CppDesignPatterns.exe
 
 ```
+
+The Windows script uses the MinGW/Ninja single-configuration layout, so both
+Debug and Release builds use `build\bin\CppDesignPatterns.exe`.
 
 
 ## Configuration

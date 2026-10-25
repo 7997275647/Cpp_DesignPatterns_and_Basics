@@ -8,7 +8,9 @@ REM Set default values
 set "BUILD_TYPE=Release"
 set "BUILD_DIR=build"
 set "ACTION=build"
-set "GENERATOR=Visual Studio 17 2022"
+set "C_COMPILER=C:\Strawberry\c\bin\gcc.exe"
+set "CXX_COMPILER=C:\Strawberry\c\bin\g++.exe"
+@REM  set "GENERATOR=Visual Studio 17 2022"
 
 REM Parse command line arguments
 if "%1"=="" (
@@ -88,10 +90,23 @@ echo Building %BUILD_TYPE% Configuration
 echo ============================================================
 echo.
 
+REM The rebuild action removes the build directory before reaching this
+REM function, so ensure it exists for every build.
+if not exist "%BUILD_DIR%" mkdir "%BUILD_DIR%"
+
+if not exist "%C_COMPILER%" (
+    echo Error: C compiler not found at %C_COMPILER%
+    goto error
+)
+if not exist "%CXX_COMPILER%" (
+    echo Error: C++ compiler not found at %CXX_COMPILER%
+    goto error
+)
+
 REM Run CMake configuration
 echo [1/2] Configuring project...
 cd /d "%BUILD_DIR%"
-cmake -G "%GENERATOR%" -DCMAKE_BUILD_TYPE=%BUILD_TYPE% -DCMAKE_CXX_STANDARD=17 ..
+cmake -U CMAKE_C_COMPILER -U CMAKE_CXX_COMPILER -DCMAKE_C_COMPILER=%C_COMPILER% -DCMAKE_CXX_COMPILER=%CXX_COMPILER% -DCMAKE_BUILD_TYPE=%BUILD_TYPE% -DCMAKE_CXX_STANDARD=17 ..
 if errorlevel 1 (
     echo Error: CMake configuration failed
     cd ..
@@ -112,7 +127,7 @@ cd ..
 echo.
 echo ============================================================
 echo Build Complete!
-echo Output directory: %BUILD_DIR%\bin\%BUILD_TYPE%
+echo Output directory: %BUILD_DIR%\bin
 echo ============================================================
 echo.
 goto :eof
@@ -152,6 +167,10 @@ set "EXE_PATH=%BUILD_DIR%\bin\%BUILD_TYPE%\CppDesignPatterns.exe"
 if exist "%EXE_PATH%" (
     echo Launching: %EXE_PATH%
     call "%EXE_PATH%"
+) else if exist "%BUILD_DIR%\bin\CppDesignPatterns.exe" (
+    set "EXE_PATH=%BUILD_DIR%\bin\CppDesignPatterns.exe"
+    echo Launching: !EXE_PATH!
+    call "!EXE_PATH!"
 ) else (
     echo Error: Executable not found at %EXE_PATH%
     goto error

@@ -31,6 +31,7 @@ set(BASICS_SOURCES
     Basics/Src/Vector.cpp
     Basics/Src/TwoPointers.cpp
     Basics/Src/OperatorOverloading.cpp
+    Basics/Src/Gpio.cpp
 )
 
 # Source files for DesignPatterns library

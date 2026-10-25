@@ -9,6 +9,17 @@
 
 int main()
 {
+    volatile uint32_t ledPort = 0;
+    volatile uint32_t ledPortModeReg = 0;
+    uint8_t ledPinNum = 5;
+    GPIO_PIN led(&ledPort, &ledPortModeReg, ledPinNum);
+    led.setHigh();
+    std::cout << "LED State: " << led.getState() << std::endl;
+    led.toggle();
+    std::cout << "LED State after toggle: " << led.getState() << std::endl;
+    led.setLow();
+    std::cout << "LED State after setting low: " << led.getState() << std::endl;
+    std::cout << "Hello World!" << std::endl;
     std::cout << "Hello World!" << std::endl;
     testOperatorOverloading();
     // testTemplateMethodDesignPattern();

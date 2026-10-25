@@ -3,6 +3,7 @@
 
 #include "../../Basics/Inc/Pointers.hpp"
 #include "../../DesignPatterns/Inc/CommandPattern.hpp"
+#include "../../Basics/Inc/Gpio.hpp"
 
 /**
  * @brief Entry point of the application.

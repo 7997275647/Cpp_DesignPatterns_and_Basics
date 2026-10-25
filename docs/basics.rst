@@ -29,3 +29,9 @@ Operator Overloading
 
 .. doxygenfile:: OperatorOverloading.hpp
    :project: CppDesignPatterns
+
+GPIO
+--------
+
+.. doxygenfile:: Gpio.hpp
+   :project: CppDesignPatterns
