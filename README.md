@@ -164,7 +164,7 @@ Please ensure:
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE) (or specify your actual license).
+This project is open source and available under the [MIT License](LICENSE).
 
 ## Author
 
