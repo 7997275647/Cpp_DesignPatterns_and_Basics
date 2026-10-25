@@ -1,4 +1,4 @@
-#include "Gpio.hpp"
+#include "../Inc/Gpio.hpp"
 
 GPIO_PIN::GPIO_PIN(volatile uint32_t *port, volatile uint32_t *modeRegister, uint8_t pinNumber)
     : port(port), modeRegister(modeRegister), pinNumber(pinNumber) {}
