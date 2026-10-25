@@ -15,6 +15,27 @@
  * - Move Command: Concrete command that executes and undoes move operations.
  * - Jump Command: Concrete command that executes and undoes jump operations.
  * - Command Invoker: Manages and executes commands.
+ *
+ * @verbatim
+ * +----------------------------------+
+ * |          <<abstract>>            |
+ * |             Command              |
+ * +----------------------------------+
+ * | + execute(): void                |
+ * | + undo(): void                   |
+ * | + clear(): void                  |
+ * | + ~Command()                     |
+ * +----------------------------------+
+ *                 ^              ^
+ *                 |              |
+ * +------------------------+ +------------------------+
+ * |          Move          | |          Jump          |
+ * +------------------------+ +------------------------+
+ * | + execute(): void      | | + execute(): void      |
+ * | + undo(): void         | | + undo(): void         |
+ * | + clear(): void        | | + clear(): void        |
+ * +------------------------+ +------------------------+
+ * @endverbatim
  */
 
 /**

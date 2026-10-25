@@ -14,6 +14,27 @@
  * Key Components:
  * - BeverageMaker (Abstract Base Class): Defines the template method and common operations.
  * - TeaMaker and CoffeeMaker (Concrete Classes): Override specific steps of the algorithm.
+ *
+ * @verbatim
+ * +----------------------------------+
+ * |          <<abstract>>            |
+ * |          BeverageMaker           |
+ * +----------------------------------+
+ * | + makeBeverage(): void           |
+ * | - brew(): void                   |
+ * | - boilWater(): void              |
+ * | - addCondiments(): void          |
+ * | # pourInCup(): void              |
+ * +----------------------------------+
+ *                 ^              ^
+ *                 |              |
+ * +------------------------+ +------------------------+
+ * |        TeaMaker        | |       CoffeeMaker      |
+ * +------------------------+ +------------------------+
+ * | + brew(): void         | | + brew(): void         |
+ * | + addCondiments(): void| | + addCondiments(): void|
+ * +------------------------+ +------------------------+
+ * @endverbatim
  */
 
 /**

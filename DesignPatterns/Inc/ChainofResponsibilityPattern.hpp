@@ -12,6 +12,40 @@
  * - Handler (Abstract): Defines the interface for handling requests and passing to next handler.
  * - Concrete Handlers: BasicHandler, MediumHandler, CriticalHandler implement specific handling logic.
  * - Client: Initiates the request and passes it to the first handler in the chain.
+ *
+ * @verbatim
+ * +-----------------------------+
+ * |       <<enumeration>>       |
+ * |           Request           |
+ * +-----------------------------+
+ * | BASIC                       |
+ * | MEDIUM                      |
+ * | CRITICAL                    |
+ * | IMPOSSIBLE                  |
+ * +-----------------------------+
+ *
+ * +--------------------------------------+
+ * |          <<abstract>>                |
+ * |          SupportHandle               |
+ * +--------------------------------------+
+ * | + HandleRequest(Request): void       |
+ * | + AssignRequesttoNextHandler(...):   |
+ * |   void                               |
+ * +--------------------------------------+
+ *                 ^             ^             ^
+ *                 |             |             |
+ * +-------------------+ +-------------------+ +-------------------+
+ * |   BasicHandler    | |   MediumHandler   | |  CriticalHandler  |
+ * +-------------------+ +-------------------+ +-------------------+
+ * | - nextHandler:     | | - nextHandler:   | | - nextHandler:    |
+ * |   SupportHandle*   | |   SupportHandle* | |   SupportHandle*  |
+ * +-------------------+ +-------------------+ +-------------------+
+ * | + BasicHandler(...) | | + MediumHandler | | + CriticalHandler |
+ * | + HandleRequest()   | |   (...)         | |   (...)           |
+ * | + AssignRequest...()| | + HandleRequest()| | + HandleRequest() |
+ * |                     | | + AssignRequest | | + AssignRequest  |
+ * +-------------------+ +-------------------+ +-------------------+
+ * @endverbatim
  */
 
 /**

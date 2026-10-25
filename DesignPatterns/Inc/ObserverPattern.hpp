@@ -16,6 +16,33 @@
  * - WeatherStation (Subject): Maintains a list of observers and notifies them of state changes.
  * - Observer (Abstract Observer): Defines the interface for objects that should be notified.
  * - ObserverTV and ObserverMobile (Concrete Observers): Concrete implementations that update when notified.
+ *
+ * @verbatim
+ * +-----------------------------+       +-----------------------------+
+ * |        <<abstract>>         |       |        <<abstract>>         |
+ * |          Subject            |       |          Observer            |
+ * +-----------------------------+       +-----------------------------+
+ * | + addObserver(Observer*)    |       | + update(string&): void     |
+ * | + notifyObserver(): void    |       +-----------------------------+
+ * +-----------------------------+                    ^
+ *                 ^                                  |
+ *                 |                    +-----------------------------+
+ * +-----------------------------+       |       ObserverTV             |
+ * |       WeatherStation        |       +-----------------------------+
+ * +-----------------------------+       | - weathernews: string       |
+ * | - observers: vector<        |       | - display(): void            |
+ * |   Observer*>                |       | + update(string&): void      |
+ * | - weathernews: string       |       +-----------------------------+
+ * +-----------------------------+                    ^
+ * | + addObserver(Observer*)    |                    |
+ * | + notifyObserver(): void    |       +-----------------------------+
+ * | + setWeather(string&): void |       |      ObserverMobile           |
+ * +-----------------------------+       +-----------------------------+
+ *          |                            | - weathernews: string       |
+ *          +--------------------------->| - display(): void            |
+ *                                       | + update(string&): void      |
+ *                                       +-----------------------------+
+ * @endverbatim
  */
 
 /**

@@ -16,6 +16,27 @@
  * - Context: Maintains the current state and delegates requests to the state object.
  * - State (Abstract): Defines the interface for state-specific behavior.
  * - Concrete States: Implement state-specific behavior.
+ *
+ * @verbatim
+ * +-----------------------------+       +-----------------------------+
+ * |        <<abstract>>         |       |           Context           |
+ * |            State            |       +-----------------------------+
+ * +-----------------------------+       | - state: State*             |
+ * | + stateHandle(): void       |       +-----------------------------+
+ * | + ~State()                  |       | + Context(State*)            |
+ * +-----------------------------+       | + setState(State*): void     |
+ *                 ^                     | + request(): void             |
+ *                 |                     | + ~Context()                   |
+ *       +---------+---------+           +-----------------------------+
+ *       |                   |                         |
+ *       |                   |                         |
+ * +-------------------+ +-------------------+         |
+ * | StateItemSelected | |  StateItemDispense|<---------+
+ * +-------------------+ +-------------------+
+ * | + stateHandle()   | | + stateHandle()   |
+ * | + ~StateItem...() | | + ~StateItem...() |
+ * +-------------------+ +-------------------+
+ * @endverbatim
  */
 
 /**

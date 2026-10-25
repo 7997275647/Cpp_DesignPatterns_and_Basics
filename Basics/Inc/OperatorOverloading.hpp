@@ -1,6 +1,22 @@
 #ifndef OPERATOROVERLOADING_HPP
 #define OPERATOROVERLOADING_HPP
 
+/**
+ * @brief Two-dimensional vector used to demonstrate operator overloading.
+ *
+ * @verbatim
+ * +----------------------------------+
+ * |             Vector               |
+ * +----------------------------------+
+ * | + x: int                         |
+ * | + y: int                         |
+ * +----------------------------------+
+ * | + Vector()                       |
+ * | + Vector(x, y)                   |
+ * | + operator+(Vector): Vector      |
+ * +----------------------------------+
+ * @endverbatim
+ */
 class Vector
 {
 public:
